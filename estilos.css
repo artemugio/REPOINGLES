@@ -302,58 +302,88 @@ body {
     background: rgba(0, 150, 255, 0.1);
 }
 
-/* FOOTER */
-.footer {
-    text-align: center;
-    padding: 30px;
-    border-top: 2px solid;
-    border-image: linear-gradient(90deg, #ff00ff, #00ffff) 1;
-    color: #a0a0ff;
-    font-size: 0.9rem;
+/* ============================================================================
+   ESTILOS PARA DIÁLOGOS - NUEVAS SECCIONES
+   ============================================================================ */
+
+.dialogo {
+    background: rgba(20, 30, 60, 0.6);
+    border: 1px solid rgba(100, 150, 255, 0.2);
+    border-radius: 12px;
+    padding: 20px 25px;
+    margin: 15px 0 25px 0;
+    position: relative;
 }
 
-.footer-sub {
-    font-size: 0.8rem;
-    margin-top: 5px;
-    color: #8080ff;
+.dialogo::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background: linear-gradient(180deg, var(--color-seccion, #00ffff), transparent);
+    border-radius: 12px 0 0 12px;
 }
 
-.iconos-footer {
-    margin-top: 15px;
-    font-size: 1.5rem;
-    display: flex;
-    justify-content: center;
-    gap: 25px;
+.dialogo p {
+    margin-bottom: 12px;
+    line-height: 1.7;
+    padding-left: 10px;
 }
 
-.iconos-footer i {
-    color: #00ffff;
-    text-shadow: 0 0 10px #00ffff;
+.dialogo p:last-child {
+    margin-bottom: 0;
 }
 
-/* RESPONSIVE */
-@media (max-width: 768px) {
-    .portada {
-        flex-direction: column;
-        text-align: center;
-    }
-    
-    .neon-text {
-        font-size: 2.5rem;
-    }
-    
-    .subtitulo {
-        font-size: 1.2rem;
-    }
-    
-    .grid-indice {
-        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    }
-    
-    .contenido {
-        padding: 20px;
-    }
+.dialogo strong {
+    color: #ffcc00;
+    font-weight: 600;
 }
+
+/* Colores específicos para cada tipo de diálogo */
+#conversaciones-cotidianas .dialogo {
+    border-color: rgba(255, 102, 0, 0.3);
+}
+
+#conversaciones-cotidianas .dialogo strong {
+    color: #ff9933;
+}
+
+#situaciones-complicadas .dialogo {
+    border-color: rgba(204, 0, 0, 0.3);
+    background: rgba(60, 20, 20, 0.5);
+}
+
+#situaciones-complicadas .dialogo strong {
+    color: #ff6666;
+}
+
+#dialogos-trabajo .dialogo {
+    border-color: rgba(0, 153, 204, 0.3);
+}
+
+#dialogos-trabajo .dialogo strong {
+    color: #66ccff;
+}
+
+#telefono-email .dialogo {
+    border-color: rgba(153, 51, 204, 0.3);
+}
+
+#telefono-email .dialogo strong {
+    color: #cc99ff;
+}
+
+/* Estilos para emails en la sección de teléfono y email */
+#telefono-email .ejemplo {
+    background: rgba(40, 20, 60, 0.5);
+    border-left-color: #9933cc;
+    font-family: 'Courier New', monospace;
+    line-height: 1.8;
+    white-space: pre-line;
+}
+
 /* ============================================================================
    ESTILOS PARA SECCIÓN TTS
    ============================================================================ */
@@ -587,8 +617,58 @@ body {
     color: #ffcc00;
 }
 
-/* Responsive adicional para TTS */
+/* FOOTER */
+.footer {
+    text-align: center;
+    padding: 30px;
+    border-top: 2px solid;
+    border-image: linear-gradient(90deg, #ff00ff, #00ffff) 1;
+    color: #a0a0ff;
+    font-size: 0.9rem;
+}
+
+.footer-sub {
+    font-size: 0.8rem;
+    margin-top: 5px;
+    color: #8080ff;
+}
+
+.iconos-footer {
+    margin-top: 15px;
+    font-size: 1.5rem;
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+}
+
+.iconos-footer i {
+    color: #00ffff;
+    text-shadow: 0 0 10px #00ffff;
+}
+
+/* RESPONSIVE */
 @media (max-width: 768px) {
+    .portada {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .neon-text {
+        font-size: 2.5rem;
+    }
+    
+    .subtitulo {
+        font-size: 1.2rem;
+    }
+    
+    .grid-indice {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    }
+    
+    .contenido {
+        padding: 20px;
+    }
+    
     .texto-bilingue {
         grid-template-columns: 1fr;
     }
@@ -606,4 +686,42 @@ body {
     .btn-tts {
         justify-content: center;
     }
+    
+    .dialogo {
+        padding: 15px 20px;
+    }
+}
+
+/* Animaciones adicionales */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.seccion {
+    animation: fadeIn 0.5s ease-out;
+}
+
+/* Scrollbar personalizado para la página */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(10, 10, 30, 0.5);
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #ff00ff, #00ffff);
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, #ff33ff, #33ffff);
 }
